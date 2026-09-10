@@ -1,0 +1,108 @@
+/* Pełnoekranowy hero fotograficzny — sauna w zielonym plenerze */
+.hero {
+  min-height: 760px;
+  padding: 0;
+  background: #173a2c;
+}
+
+.hero::before {
+  z-index: 1;
+  opacity: 1;
+  background:
+    linear-gradient(90deg, rgba(6, 51, 35, .16) 0%, rgba(6, 51, 35, .1) 52%, transparent 82%),
+    linear-gradient(0deg, rgba(7, 25, 18, .35), transparent 48%);
+  mix-blend-mode: normal;
+}
+
+.hero-orbit { display: none; }
+
+.hero-grid {
+  min-height: 760px;
+  grid-template-columns: 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  isolation: isolate;
+  max-width: 680px;
+  padding: 115px 0 105px;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 84px;
+  right: auto;
+  bottom: auto;
+  left: -16px;
+  width: 650px;
+  height: 400px;
+  background: rgba(3, 55, 38, .68);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.hero h1 {
+  max-width: 680px;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(58px, 6.3vw, 88px);
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: -.065em;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, .24);
+}
+
+.hero h1 em {
+  display: inline-block;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.hero-lead { color: rgba(255, 255, 255, .83); }
+.hero-meta { color: rgba(255, 255, 255, .65); }
+
+.hero-visual {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  min-height: 0;
+}
+
+.hero-image-wrap {
+  inset: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  object-fit: cover;
+  object-position: center center;
+  filter: saturate(.9) contrast(1.03);
+}
+
+.hero-image-wrap .image-wash { display: none; }
+.hero-stamp { top: auto; right: 5%; bottom: 48px; z-index: 3; }
+.hero-caption { right: 5%; bottom: 170px; z-index: 3; }
+
+@media (max-width: 760px) {
+  .hero, .hero-grid { min-height: 690px; }
+  .hero-content { padding: 92px 0 90px; }
+  .hero-content::before { top: 60px; right: auto; bottom: auto; left: -8px; width: calc(100% + 16px); height: 400px; }
+  .hero h1 { font-size: clamp(49px, 15vw, 70px); }
+  .hero::before {
+    background: linear-gradient(90deg, rgba(9, 31, 23, .9), rgba(12, 37, 28, .58));
+  }
+  .hero-image-wrap img { width: 100%; margin-left: 0; object-fit: cover; object-position: 64% 43%; }
+  .hero-stamp { right: 18px; bottom: 28px; }
+  .hero-caption { display: none; }
+}
